@@ -46,3 +46,11 @@ WHERE o.order_num = 2;
 -- 4.
 ALTER TABLE orders
 ADD CONSTRAINT user_id FOREIGN KEY (order_num) REFERENCES users(user_id);
+
+-- 5.
+SELECT * FROM orders
+WHERE order_num = 2;
+
+SELECT DISTINCT u.name, COUNT(DISTINCT o.order_num) FROM orders o
+INNER JOIN users u ON u.user_id = o.order_num
+GROUP BY u.name;
